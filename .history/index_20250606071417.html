@@ -221,8 +221,8 @@
         }
 
     </script>
-
     <script>
+        // Select the <form> inside .contact-right
         const msg = document.getElementById("msg");
         const form = document.forms['mail']
         document.querySelector('.contact-right form').addEventListener('submit', function (e) {
@@ -230,9 +230,9 @@
 
             emailjs.sendForm('service_8hz87px', 'template_j4c3e18', this)
                 .then(function () {
-                    msg.innerHTML = "Message sent successfully";
-                    setTimeout(function () {
-                        msg.innerHTML = ""
+                    msg.innerHTML="Message sent successfully";
+                    setTimeout(function(){
+                        msg.innerHTML=""
                     }, 5000)
                     form.reset()
                 }, function (error) {
@@ -240,54 +240,53 @@
                 });
         });
     </script>
-    
     <script>
-        const element = document.getElementById("typed-text");
+  const element = document.getElementById("typed-text");
 
-        const words = [
-            { text: "Hi,", highlight: false },
-            { text: "I'm", highlight: false },
-            { text: "Durga", highlight: true },
-            { text: "Praharsha", highlight: true }
-        ];
+  const words = [
+    { text: "Hi,", highlight: false },
+    { text: "I'm", highlight: false },
+    { text: "Durga", highlight: true },
+    { text: "Praharsha", highlight: true }
+  ];
 
-        let wordIndex = 0;
-        let charIndex = 0;
-        let currentLine = "";
+  let wordIndex = 0;
+  let charIndex = 0;
+  let currentLine = "";
 
-        function typeNextChar() {
-            if (wordIndex < words.length) {
-                const currentWord = words[wordIndex];
-                const isHighlight = currentWord.highlight;
+  function typeNextChar() {
+    if (wordIndex < words.length) {
+      const currentWord = words[wordIndex];
+      const isHighlight = currentWord.highlight;
 
-                if (charIndex === 0 && isHighlight) {
-                    currentLine += `<span class="name-highlight">`;
-                }
+      if (charIndex === 0 && isHighlight) {
+        currentLine += `<span class="name-highlight">`;
+      }
 
-                if (charIndex < currentWord.text.length) {
-                    currentLine += currentWord.text.charAt(charIndex);
-                    element.innerHTML = currentLine + `<span class="cursor">|</span>`;
-                    charIndex++;
-                    setTimeout(typeNextChar, 150);
-                } else {
-                    if (isHighlight) {
-                        currentLine += `</span>`;
-                    }
-
-                    currentLine += " ";
-                    element.innerHTML = currentLine + `<span class="cursor">|</span>`;
-                    wordIndex++;
-                    charIndex = 0;
-                    setTimeout(typeNextChar, 300);
-                }
-            } else {
-                // Remove blinking cursor at end
-                element.innerHTML = currentLine;
-            }
+      if (charIndex < currentWord.text.length) {
+        currentLine += currentWord.text.charAt(charIndex);
+        element.innerHTML = currentLine;
+        charIndex++;
+        setTimeout(typeNextChar, 150);
+      } else {
+        if (isHighlight) {
+          currentLine += `</span>`;
         }
 
-        typeNextChar();
-    </script>
+        currentLine += " ";
+        element.innerHTML = currentLine;
+        wordIndex++;
+        charIndex = 0;
+        setTimeout(typeNextChar, 300);
+      }
+    } else {
+      // Remove blinking cursor at end
+      element.innerHTML = currentLine;
+    }
+  }
+
+  typeNextChar();
+</script>
 
 
 </body>

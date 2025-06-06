@@ -221,8 +221,8 @@
         }
 
     </script>
-
     <script>
+        // Select the <form> inside .contact-right
         const msg = document.getElementById("msg");
         const form = document.forms['mail']
         document.querySelector('.contact-right form').addEventListener('submit', function (e) {
@@ -230,9 +230,9 @@
 
             emailjs.sendForm('service_8hz87px', 'template_j4c3e18', this)
                 .then(function () {
-                    msg.innerHTML = "Message sent successfully";
-                    setTimeout(function () {
-                        msg.innerHTML = ""
+                    msg.innerHTML="Message sent successfully";
+                    setTimeout(function(){
+                        msg.innerHTML=""
                     }, 5000)
                     form.reset()
                 }, function (error) {
@@ -240,55 +240,32 @@
                 });
         });
     </script>
-    
-    <script>
-        const element = document.getElementById("typed-text");
+<script>
+  const element = document.getElementById("typed-text");
+  const words = ["Hi,", "I'm", "Durga", "Praharsha"];
+  let wordIndex = 0;
+  let charIndex = 0;
 
-        const words = [
-            { text: "Hi,", highlight: false },
-            { text: "I'm", highlight: false },
-            { text: "Durga", highlight: true },
-            { text: "Praharsha", highlight: true }
-        ];
+  function typeNextChar() {
+    if (wordIndex < words.length) {
+      const currentWord = words[wordIndex];
 
-        let wordIndex = 0;
-        let charIndex = 0;
-        let currentLine = "";
+      if (charIndex < currentWord.length) {
+        element.innerHTML += currentWord.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeNextChar, 150); // Delay between letters
+      } else {
+        // Add space after a word and move to the next word
+        element.innerHTML += " ";
+        wordIndex++;
+        charIndex = 0;
+        setTimeout(typeNextChar, 300); // Delay between words
+      }
+    }
+  }
 
-        function typeNextChar() {
-            if (wordIndex < words.length) {
-                const currentWord = words[wordIndex];
-                const isHighlight = currentWord.highlight;
-
-                if (charIndex === 0 && isHighlight) {
-                    currentLine += `<span class="name-highlight">`;
-                }
-
-                if (charIndex < currentWord.text.length) {
-                    currentLine += currentWord.text.charAt(charIndex);
-                    element.innerHTML = currentLine + `<span class="cursor">|</span>`;
-                    charIndex++;
-                    setTimeout(typeNextChar, 150);
-                } else {
-                    if (isHighlight) {
-                        currentLine += `</span>`;
-                    }
-
-                    currentLine += " ";
-                    element.innerHTML = currentLine + `<span class="cursor">|</span>`;
-                    wordIndex++;
-                    charIndex = 0;
-                    setTimeout(typeNextChar, 300);
-                }
-            } else {
-                // Remove blinking cursor at end
-                element.innerHTML = currentLine;
-            }
-        }
-
-        typeNextChar();
-    </script>
-
+  typeNextChar();
+</script>
 
 </body>
 

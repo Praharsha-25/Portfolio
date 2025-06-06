@@ -39,7 +39,7 @@
             </nav>
             <div class="header-text">
                 <p class="fade-title">Full Stack Developer</p>
-                <h1 class="typing" id="typed-text"></h1>
+                <h1 class="typing"><span id="typed-text"></span></h1>
 
             </div>
         </div>
@@ -221,8 +221,8 @@
         }
 
     </script>
-
     <script>
+        // Select the <form> inside .contact-right
         const msg = document.getElementById("msg");
         const form = document.forms['mail']
         document.querySelector('.contact-right form').addEventListener('submit', function (e) {
@@ -230,9 +230,9 @@
 
             emailjs.sendForm('service_8hz87px', 'template_j4c3e18', this)
                 .then(function () {
-                    msg.innerHTML = "Message sent successfully";
-                    setTimeout(function () {
-                        msg.innerHTML = ""
+                    msg.innerHTML="Message sent successfully";
+                    setTimeout(function(){
+                        msg.innerHTML=""
                     }, 5000)
                     form.reset()
                 }, function (error) {
@@ -240,55 +240,21 @@
                 });
         });
     </script>
-    
     <script>
-        const element = document.getElementById("typed-text");
+  const element = document.getElementById("typed-text");
+  const words = ["Hi,", "I'm", "Durga", "Praharsha"];
+  let index = 0;
 
-        const words = [
-            { text: "Hi,", highlight: false },
-            { text: "I'm", highlight: false },
-            { text: "Durga", highlight: true },
-            { text: "Praharsha", highlight: true }
-        ];
+  function typeWord() {
+    if (index < words.length) {
+      element.innerHTML += (index > 0 ? " " : "") + words[index];
+      index++;
+      setTimeout(typeWord, 500); // Adjust speed here (ms between words)
+    }
+  }
 
-        let wordIndex = 0;
-        let charIndex = 0;
-        let currentLine = "";
-
-        function typeNextChar() {
-            if (wordIndex < words.length) {
-                const currentWord = words[wordIndex];
-                const isHighlight = currentWord.highlight;
-
-                if (charIndex === 0 && isHighlight) {
-                    currentLine += `<span class="name-highlight">`;
-                }
-
-                if (charIndex < currentWord.text.length) {
-                    currentLine += currentWord.text.charAt(charIndex);
-                    element.innerHTML = currentLine + `<span class="cursor">|</span>`;
-                    charIndex++;
-                    setTimeout(typeNextChar, 150);
-                } else {
-                    if (isHighlight) {
-                        currentLine += `</span>`;
-                    }
-
-                    currentLine += " ";
-                    element.innerHTML = currentLine + `<span class="cursor">|</span>`;
-                    wordIndex++;
-                    charIndex = 0;
-                    setTimeout(typeNextChar, 300);
-                }
-            } else {
-                // Remove blinking cursor at end
-                element.innerHTML = currentLine;
-            }
-        }
-
-        typeNextChar();
-    </script>
-
+  typeWord();
+</script>
 
 </body>
 

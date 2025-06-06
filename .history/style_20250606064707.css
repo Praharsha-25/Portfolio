@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -69,67 +69,47 @@ nav ul li a:hover::after {
 }
 
 .typing {
-  font-size: 2.5rem;
-  line-height: 1.4;
-  display: inline-block;
-  border-right: 3px solid #080808;
-  white-space: normal;
-  word-break: break-word;
-  animation: typing 2s steps(30, end) forwards, blink 0.6 infinite;
-  max-width: 100%;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-.cursor {
-  border-left: 2px solid #080808;
-  animation: blink 0.7s steps(1) infinite;
-}
-
-.name-highlight {
-  color: #ff004f;
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .typing {
-    font-size: 1.5rem;
-  }
+    font-size: 2.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #000;
+    width: 0;
+    animation: typing 3s steps(30, end) forwards, blink 0.6s infinite;
 }
 
 .typing span {
-  color: #ff4081;
+    color: #ff4081;
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
 }
+
 @keyframes blink {
-  50% { border-color: transparent }
+    50% {
+        border-color: transparent
+    }
 }
 
 .fade-title {
-  font-size: 1.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1.5s ease-out forwards;
-  animation-delay: 0.5s;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
+    animation-delay: 0.5s;
 }
 
 @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .header-text h1 {
@@ -379,12 +359,25 @@ nav .bi {
 
 @media only screen and (max-width: 600px) {
     .header-text {
-        margin-top: 100%;
+        margin-top: 30%;
+        /* reduce from 100% to bring text up */
         font-size: 16px;
+        text-align: center;
+        padding: 0 10px;
+        /* add some horizontal padding */
     }
 
     .header-text h1 {
-        font-size: 30px;
+        font-size: 24px;
+        /* make text smaller */
+        padding-bottom: 0;
+        /* remove excess spacing */
+    }
+
+    .typing {
+        font-size: 1.5rem;
+        border-right: 2px solid #000;
+        animation: typing 2.5s steps(20, end) forwards, blink 0.6s infinite;
     }
 
     nav .bi {
@@ -392,7 +385,7 @@ nav .bi {
         font-size: 25px
     }
 
-    nav ul{
+    nav ul {
         background: #ff004f;
         position: fixed;
         top: 0;
@@ -404,45 +397,47 @@ nav .bi {
         transition: right 0.5s;
     }
 
-    nav ul li{
+    nav ul li {
         display: block;
         margin: 25px;
     }
 
-    nav ul .bi{
+    nav ul .bi {
         position: absolute;
         top: 25px;
         left: 25px;
         cursor: pointer;
     }
 
-    .sub-title{
+    .sub-title {
         font-size: 40px;
     }
 
-    .about-col-1, .about-col-2{
+    .about-col-1,
+    .about-col-2 {
         flex-basis: 100%;
     }
 
-    .about-col-1{
+    .about-col-1 {
         margin-bottom: 30px;
     }
 
-    .about-col-2{
+    .about-col-2 {
         font-size: 14px;
     }
 
-    .tab-links{
+    .tab-links {
         font-size: 16px;
         margin-right: 20px;
     }
 
-    .contact-left, .contact-right{
+    .contact-left,
+    .contact-right {
         flex-basis: 100%;
     }
 }
 
-#msg{
+#msg {
     color: #61b752;
     margin-top: -40px;
     display: block;

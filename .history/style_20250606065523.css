@@ -70,41 +70,15 @@ nav ul li a:hover::after {
 
 .typing {
   font-size: 2.5rem;
-  line-height: 1.4;
+  line-height: 1.2;
+  border-right: 3px solid #000;
   display: inline-block;
-  border-right: 3px solid #080808;
-  white-space: normal;
+  padding-right: 5px;
+  animation: blink 0.6s infinite;
   word-break: break-word;
-  animation: typing 2s steps(30, end) forwards, blink 0.6 infinite;
+  white-space: normal;
   max-width: 100%;
 }
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-.cursor {
-  border-left: 2px solid #080808;
-  animation: blink 0.7s steps(1) infinite;
-}
-
-.name-highlight {
-  color: #ff004f;
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .typing {
-    font-size: 1.5rem;
-  }
-}
-
 .typing span {
   color: #ff4081;
 }

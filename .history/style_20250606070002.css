@@ -67,30 +67,15 @@ nav ul li a:hover::after {
     margin-top: 10%;
     font-size: 30px;
 }
-
 .typing {
   font-size: 2.5rem;
   line-height: 1.4;
   display: inline-block;
-  border-right: 3px solid #080808;
+  border-right: 3px solid #000;
   white-space: normal;
   word-break: break-word;
-  animation: typing 2s steps(30, end) forwards, blink 0.6 infinite;
-  max-width: 100%;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-.cursor {
-  border-left: 2px solid #080808;
   animation: blink 0.7s steps(1) infinite;
-}
-
-.name-highlight {
-  color: #ff004f;
+  max-width: 100%;
 }
 
 @keyframes blink {

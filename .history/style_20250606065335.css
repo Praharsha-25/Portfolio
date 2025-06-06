@@ -66,44 +66,21 @@ nav ul li a:hover::after {
 .header-text {
     margin-top: 10%;
     font-size: 30px;
+     max-width: 90vw;  /* Limits width for wrapping */
+  word-wrap: break-word;
 }
 
 .typing {
   font-size: 2.5rem;
-  line-height: 1.4;
+  overflow: hidden;
+  border-right: 3px solid #000;
   display: inline-block;
-  border-right: 3px solid #080808;
-  white-space: normal;
-  word-break: break-word;
-  animation: typing 2s steps(30, end) forwards, blink 0.6 infinite;
-  max-width: 100%;
+  animation: typing 3s steps(30, end) forwards, blink 0.6s infinite;
+  white-space: normal;        /* ✅ Allows wrapping */
+  word-break: normal;         /* ✅ Prevents mid-word breaks */
+  max-width: 100%;            /* ✅ Keeps it within the container */
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-.cursor {
-  border-left: 2px solid #080808;
-  animation: blink 0.7s steps(1) infinite;
-}
-
-.name-highlight {
-  color: #ff004f;
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .typing {
-    font-size: 1.5rem;
-  }
-}
 
 .typing span {
   color: #ff4081;
